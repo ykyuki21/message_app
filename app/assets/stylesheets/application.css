@@ -14,7 +14,15 @@
  *= require_self
  */
 
- .dropdown:hover
- .dropdown-menu {
-    display: block;
-  }
+nav {
+  height: 10vh;
+}
+
+.container {
+  height: 90vh;
+}
+
+.dropdown:hover
+.dropdown-menu {
+  display: block;
+}
