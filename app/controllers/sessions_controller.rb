@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
-  def index
-    redirect_to root_path if is_logged_in?
+  before_action :logged_in_redirect, only: [:new, :create]
+
+  def new
   end
 
   def create
@@ -11,7 +12,7 @@ class SessionsController < ApplicationController
       redirect_to root_path
     else
       flash.now[:danger] = "ログインに失敗しました。"
-      render 'index'
+      render 'new'
     end
   end
 
@@ -20,4 +21,12 @@ class SessionsController < ApplicationController
     flash[:success] = "ログアウトしました。"
     redirect_to root_path
   end
+
+  private
+    def logged_in_redirect
+      if is_logged_in?
+        flash[:notice] = "すでにログインしています。"
+        redirect_to root_path
+      end
+    end
 end
