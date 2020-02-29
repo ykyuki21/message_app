@@ -12,15 +12,18 @@
       <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
       </div>
       <ul class="dropdown-menu absolute hidden text-gray-700 pt-1">
-        <li class="">
-          <%= link_to "Login", login_path, class: "bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %>
-        </li>
-        <li class="">
-          <a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap rounded-t" href="#">Logout</a>
-        </li>
-        <li class="">
-          <a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap rounded-b" href="#">SignUp</a>
-        </li>
+        <% if is_logged_in? %>
+          <li class="">
+            <%= button_to "Logout", logout_path, method: "delete", class: "bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %>
+          </li>
+        <% else %>
+          <li class="">
+            <%= link_to "Login", login_path, class: "bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %>
+          </li>
+          <li class="">
+            <a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap rounded-b" href="#">SignUp</a>
+          </li>
+        <% end %>
       </ul>
     </div>
 
