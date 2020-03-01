@@ -1,10 +1,10 @@
 <div class="flex justify-center h-full">
   <div class="flex flex-col flex-initial box-border h-full w-9/12 p-4 mr-4 border border-gray-400">
-    <%= render @messages %>
-    <div class="flex mt-auto">
-      <input type="text" class="flex-initial h-4 p-4 mr-2 text-sm w-11/12 border" placeholder="メッセージを入力"></input>
-      <button class="flex-initial btn bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-1 px-2 rounded w-1/12">送信</button>
-    </div>
+  <%= render @messages %>
+  <%= form_for(@message, url: message_path, html: {class: "flex mt-auto"}) do |f| %>
+    <%= f.text_field :body, {placeholder: "メッセージを入力", class: "flex-initial h-4 p-4 mr-2 text-sm w-11/12 border rounded"} %>
+    <%= f.button "送信", {class: "flex-initial btn bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-1 px-2 rounded w-1/12"} %>
+  <% end %>
   </div>
   <div class="box-border h-320 w-3/12 p-4 border border-gray-400">
     <div class=""></div>
